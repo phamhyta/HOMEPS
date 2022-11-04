@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('front-end.home');
 });
+Route::get('/admin/bills', function () {
+    return view('back-end.bills.list');
+});

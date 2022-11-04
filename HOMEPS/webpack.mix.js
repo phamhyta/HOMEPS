@@ -20,4 +20,5 @@ mix.js("resources/js/app.js", "public/js")
     .css("resources/css/toastr.min.css", "public/css/toastr.min.css")
     .copy("resources/js/moment.min.js", "public/js/moment.min.js")
     .copy("resources/js/jquery.cookie.min.js", "public/js/jquery.cookie.min.js")
+    .css("resources/css/bill-list.css", "public/css/bill-list.css")
     .sourceMaps();
