@@ -33,6 +33,7 @@ class OrderSeeder extends Seeder
                 "id_pc" => $id,
                 "ids_product" => "1,5,4,7",
                 "status" => 3,
+                "amount" => 134000
             ]);
         }
     }

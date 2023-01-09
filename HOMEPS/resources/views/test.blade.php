@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SB Admin 2 - Tables</title>
+    <title>HOMEPS</title>
     <!-- Custom fonts for this template -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link
@@ -33,7 +33,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-1">HOMEPS Admin</div>
             </a>
 
             <!-- Divider -->
@@ -41,7 +41,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ route('admin.home') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -134,7 +134,11 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('admin.bill.list') }}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Orders management</span></a>
+            </li>
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -267,7 +271,7 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                                        <img class="rounded-circle" src="{{ asset('img/undraw_profile_1.svg') }}"
                                             alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
@@ -279,7 +283,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
+                                        <img class="rounded-circle" src="{{ asset('img/undraw_profile_2.svg') }}"
                                             alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
@@ -291,7 +295,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
+                                        <img class="rounded-circle" src="{{ asset('img/undraw_profile_3.svg') }}"
                                             alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
@@ -325,7 +329,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="{{ asset('img/undraw_profile.svg') }}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

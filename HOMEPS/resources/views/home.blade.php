@@ -1,6 +1,6 @@
 @extends('test')
 
-@section('title', 'example')
+@section('title', 'HOMEPS')
 @push('styles')
 
 @endpush
