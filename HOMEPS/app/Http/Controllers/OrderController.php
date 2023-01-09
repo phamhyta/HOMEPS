@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Pc;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Redirect;
 
 class OrderController extends Controller
 {
@@ -16,7 +18,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::with('pc')->get();
+        $orders = Order::whereNull('deleted_at')->with('pc')->get();
         return view('back-end.bills.list', compact(['orders']));
     }
 
@@ -47,9 +49,11 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show($id)
     {
-        //
+        $order = Order::where('id', '=', $id)->first();
+        $products = $order->getProducts($order->ids_product);
+        return view('back-end.bills.detail', compact(['order', 'products']));
     }
 
     /**
@@ -81,8 +85,11 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy(Request $request)
     {
-        //
+        $order = Order::where('id', '=', $request->id)->first();
+        $order->deleted_at = Carbon::now();
+        $order->save();
+        return redirect()->route('admin.bill.list')->with('success','Deleted successfully');;
     }
 }

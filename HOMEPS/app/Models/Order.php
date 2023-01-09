@@ -42,15 +42,19 @@ class Order extends Model
         $ids_product = explode(",", $order->ids_product);
         $amount = 0;
         foreach($ids_product as $id) {
-            $product =  Product::where('id', '=', $id)->get();
-            $amount = $amount + $product[0]->price;
+            $product =  Product::where('id', '=', $id)->first();
+            $amount = $amount + $product->price * $product->amount;
         }
         return $amount;
     }
 
     public function amountTimeUse($order) {
-        $pc = Pc::where('id', '=', $order->id_pc)->get();
-        $time = Carbon::now()->diffInMinutes(new Carbon($pc[0]->use_at));
+        $pc = Pc::where('id', '=', $order->id_pc)->first();
+        $time = Carbon::now()->diffInMinutes(new Carbon($pc->use_at));
         return $time*self::AMOUNT/60;
+    }
+
+    public function getProducts($ids) {
+        return Product::whereIn('id', explode(',', $ids))->get();
     }
 }
