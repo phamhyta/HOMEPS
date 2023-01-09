@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Pc;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -14,7 +16,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::with('pc')->get();
+        return view('back-end.bills.list', compact(['orders']));
     }
 
     /**

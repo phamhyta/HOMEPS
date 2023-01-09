@@ -16,7 +16,8 @@ class PcSeeder extends Seeder
     {
         foreach(range(1, 15) as $id){
             Pc::create([
-                "name" => 'PC' . $id
+                "name" => 'PC' . $id,
+                "use_at"=>now()->subHours(2),
             ]);
         }
     }

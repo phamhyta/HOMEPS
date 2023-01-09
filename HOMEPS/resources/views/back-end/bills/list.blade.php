@@ -1,49 +1,54 @@
-@extends('app')
+@extends('test')
 
-@section('title', 'Bills')
+@section('title', 'example')
 @push('styles')
-<link href="{{ asset('css/bill-list.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/bill-list.css') }}" rel="stylesheet"/>
 @endpush
 @section('content')
-<div>
-    <h3>Bills Manager</h3>
-    <div class="d-flex justify-content-between">
-        <div class="px-5 w-25"></div>
-        <div class="px-5 w-50">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                    <th class="col-sm-1" scope="col">ID</th>
-                    <th class="col-sm-1" scope="col">ID PC</th>
-                    <th class="col-sm-2" scope="col">Product name</th>
-                    <th class="col-sm-2" scope="col">Price</th>
-                    <th class="col-sm-2" scope="col">Status</th>
-                    <th class="col-sm-2" scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for($i = 0; $i <= 10; $i++)
-                        <tr>
-                            <th class="col-sm-1" scope="row">1</th>
-                            <td class="col-sm-1">PC01</td>
-                            <td class="col-sm-2">Otto</td>
-                            <td class="col-sm-2">@mdo</td>
-                            <td class="col-sm-2">Complited</td>
-                            <td class="col-sm-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-                                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
-                                </svg>
-                                <i class="bi bi-x-circle-fill"></i>
-                            </td>
-                        </tr>
-                    @endfor
-                </tbody>
-            </table>
+    <h1 class="h3 mb-2 text-gray-800">Orders management</h1>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Orders</h6>
         </div>
-        <div class="px-5 w-25">
-            <img src="" alt="">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>PC</th>
+                            <th>Total amount</th>
+                            <th>Status</th>
+                            <th>Create At</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($orders as $order)
+                            <tr>
+                                <td>{{ $order->id }}</td>
+                                <td>{{ $order->pc[0]->name }}</td>
+                                <td>{{ $order->amount($order) + $order->amountTimeUse($order)}}</td>
+                                <td>
+                                    @if($order->status == 1)
+                                        <button class="btn btn-secondary">{{ $order->getRoleName($order->status) }}</button>
+                                    @elseif($order->status == 2)
+                                        <button class="btn btn-warning">{{ $order->getRoleName($order->status) }}</button>
+                                    @else
+                                        <button class="btn btn-success">{{ $order->getRoleName($order->status) }}</button>
+                                    @endif
+                                </td>
+                                <td>{{ $order->created_at }}</td>
+                                <td>
+                                    <a href="" class="btn btn-outline-primary mr-2">More information</a>
+                                    <a href="" class="btn btn-outline-success mr-2">Update</a>
+                                    <a href="" class="btn btn-outline-danger">Delete</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
-
 @endsection

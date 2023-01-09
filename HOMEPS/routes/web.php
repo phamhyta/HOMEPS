@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('front-end.home');
+    return view('home');
 });
-Route::get('/admin/bills', function () {
-    return view('back-end.bills.list');
+Route::get('/admin/login', function () {
+    return view('back-end.admin.login');
 });
+Route::get('/admin/register', function () {
+    return view('back-end.admin.register');
+});
+Route::get('/admin/forgot-password', function () {
+    return view('back-end.admin.forgot-password');
+});
+Route::get('/template-table', function () {
+    return view('back-end.template-table');
+});
+
+// Order route
+Route::get('/admin/bills', [OrderController::class, 'index']);

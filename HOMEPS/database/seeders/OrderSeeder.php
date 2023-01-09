@@ -17,21 +17,21 @@ class OrderSeeder extends Seeder
         foreach(range(1, 15) as $id){
             Order::create([
                 "id_pc" => $id,
-                "id_product" => rand(1,15),
+                "ids_product" => "1,2,3",
                 "status" => 1,
             ]);
         }
         foreach(range(1, 15) as $id){
             Order::create([
                 "id_pc" => $id,
-                "id_product" => rand(1,15),
+                "ids_product" => "7,2,9",
                 "status" => 2,
             ]);
         }
         foreach(range(1, 15) as $id){
             Order::create([
                 "id_pc" => $id,
-                "id_product" => rand(1,15),
+                "ids_product" => "1,5,4,7",
                 "status" => 3,
             ]);
         }
