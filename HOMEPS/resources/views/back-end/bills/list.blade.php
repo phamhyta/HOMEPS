@@ -45,32 +45,62 @@
                                 </td>
                                 <td>{{ $order->created_at }}</td>
                                 <td>
-                                    <a href="{{ route('admin.bill.detail', $order ->id) }}" class="btn btn-outline-primary mr-2">More information</a>
-                                    <a href="" class="btn btn-outline-success mr-2">Update</a>
-                                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal{{ $order->id }}">Delete</button>
+                                    <a href="{{ route('admin.bill.detail', $order ->id) }}" class="btn btn-outline-primary mr-2"><i class="fas fa-info-circle mt-0 mr-2"></i> More information</a>
+                                    <button type="button" class="btn btn-outline-success mr-2" data-toggle="modal" data-target="#updateModal{{ $order->id }}"><i class="fas fa-pencil-alt mt-0 mr-2"></i>Update</button>
+                                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal{{ $order->id }}"><i class="far fa-trash-alt mt-0 mr-2"></i> Delete</button>
                                     <!-- Modal -->
-                                    <div class="modal fade" id="deleteModal{{ $order->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $order->id }}" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="deleteModalLabel{{ $order->id }}">Delete</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Are you sure?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                            <form action="{{ route('admin.bill.delete') }}" method="POST">
-                                                @csrf
-                                                <input type="hidden" name="id" id="id" value="{{ $order->id }}">
-                                                <button type="submit" class="btn btn-primary">Delete</button>
-                                            </form>
-                                        </div>
+                                    <div class="modal fade" id="updateModal{{ $order->id }}" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel{{ $order->id }}" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="updateModalLabel{{ $order->id }}">Update</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <form action="{{ route('admin.bill.update') }}" method="POST">
+                                                    @csrf
+                                                    <div class="modal-body">
+                                                        Status:
+                                                        <input type="hidden" name="id" id="id" value="{{ $order->id }}">
+                                                        <input type="radio" class="btn-check" id="btn-check" name="status" value="1" autocomplete="off" />
+                                                        <label class="btn btn-primary" for="btn-check">{{ $order->getRoleName(1) }}</label>
+                                                        <input type="radio" class="btn-check" id="btn-check" name="status" value="2" autocomplete="off" />
+                                                        <label class="btn btn-primary" for="btn-check2">{{ $order->getRoleName(2) }}</label>
+                                                        <input type="radio" class="btn-check" id="btn-check" name="status" value="3" checked autocomplete="off" />
+                                                        <label class="btn btn-primary" for="btn-check3">{{ $order->getRoleName(3) }}</label>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <button type="submit" class="btn btn-primary">Update</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="deleteModal{{ $order->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $order->id }}" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteModalLabel{{ $order->id }}">Delete</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                <form action="{{ route('admin.bill.delete') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="id" id="id" value="{{ $order->id }}">
+                                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                                </form>
+                                            </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>

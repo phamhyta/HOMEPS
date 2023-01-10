@@ -33,4 +33,5 @@ Route::get('/template-table', function () {
 // Order route
 Route::get('/admin/bills', [OrderController::class, 'index'])->name('admin.bill.list');
 Route::get('/admin/bills/{id}', [OrderController::class, 'show'])->name('admin.bill.detail');
+Route::post('/admin/bills/update', [OrderController::class, 'update'])->name('admin.bill.update');
 Route::post('/admin/bills/delete', [OrderController::class, 'destroy'])->name('admin.bill.delete');
