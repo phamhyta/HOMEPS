@@ -12,9 +12,9 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function login(Request $request)
     {
-        //
+        return view('back-end.admin.login');
     }
 
     /**
@@ -22,9 +22,9 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function register(Request $request)
     {
-        //
+        return view('back-end.admin.register');
     }
 
     /**
@@ -33,9 +33,9 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function forgotPassword(Request $request)
     {
-        //
+        return view('back-end.admin.forgot-password');
     }
 
     /**

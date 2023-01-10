@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,22 +14,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Admin route
+Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
+Route::get('/admin/register', [AdminController::class, 'register'])->name('admin.register');
+Route::get('/admin/forgot-password', [AdminController::class, 'forgotPassword'])->name('admin.forgot-password');
 
-Route::get('/admin', function () {
-    return view('home');
-}) -> name('admin.home');
-Route::get('/admin/login', function () {
-    return view('back-end.admin.login');
-});
-Route::get('/admin/register', function () {
-    return view('back-end.admin.register');
-});
-Route::get('/admin/forgot-password', function () {
-    return view('back-end.admin.forgot-password');
-});
-Route::get('/template-table', function () {
-    return view('back-end.template-table');
-});
+// Home route 
+Route::get('/admin', [OrderController::class, 'create'])->name('admin.home');
 
 // Order route
 Route::get('/admin/bills', [OrderController::class, 'index'])->name('admin.bill.list');
