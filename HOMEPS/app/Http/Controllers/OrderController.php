@@ -74,9 +74,14 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request)
     {
-        //
+        $order = Order::where('id', '=', $request->id)->first();
+        $order->status = $request->status;
+        if($request->status == 3) $order->amount = $order->amount($order) + $order->amountTimeUse($order);
+        else $order->amount = null;
+        $order->save();
+        return redirect()->route('admin.bill.list')->with('success','Updated successfully');
     }
 
     /**
@@ -90,6 +95,6 @@ class OrderController extends Controller
         $order = Order::where('id', '=', $request->id)->first();
         $order->deleted_at = Carbon::now();
         $order->save();
-        return redirect()->route('admin.bill.list')->with('success','Deleted successfully');;
+        return redirect()->route('admin.bill.list')->with('success','Deleted successfully');
     }
 }
