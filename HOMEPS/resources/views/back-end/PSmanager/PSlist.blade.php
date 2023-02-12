@@ -22,7 +22,7 @@
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form action="{{ route('admin.PSmanager.create') }}" method="POST">
+                                <form action="{{ route('admin.pc.create') }}" method="POST">
                                 <div class="modal-body">
                                         @csrf
                                         <div>
@@ -81,7 +81,7 @@
                                                     <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <form action="{{ route('admin.PSmanager.update') }}" method="POST">
+                                                <form action="{{ route('admin.pc.update') }}" method="POST">
                                                     @csrf
                                                     <div class="modal-body">
                                                         Status:
@@ -118,7 +118,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                <form action="{{ route('admin.PSmanager.delete') }}" method="POST">
+                                                <form action="{{ route('admin.pc.delete') }}" method="POST">
                                                     @csrf
                                                     <input type="hidden" name="id" id="id" value="{{ $order->id }}">
                                                     <button type="submit" class="btn btn-primary">Delete</button>

@@ -30,8 +30,8 @@ Route::post('/admin/bills/update', [OrderController::class, 'update'])->name('ad
 Route::post('/admin/bills/delete', [OrderController::class, 'destroy'])->name('admin.bill.delete');
 
 //PS route
-Route::get('/admin/PSmanager', [PcController::class, 'index'])->name('admin.PSmanager.PSlist');
-Route::get('/admin/PSmanager/{id}', [PcController::class, 'show'])->name('admin.PSmanager.detail');
-Route::post('/admin/PSmanager/delete', [PcController::class, 'destroy'])->name('admin.PSmanager.delete');
-Route::post('/admin/PSmanager/create', [PcController::class, 'create'])->name('admin.PSmanager.create');
-Route::post('/admin/PSmanager/update', [PcController::class, 'update'])->name('admin.PSmanager.update');
+Route::get('/admin/PSmanager', [PcController::class, 'index'])->name('admin.pc.list');
+Route::get('/admin/PSmanager/{id}', [PcController::class, 'show'])->name('admin.pc.detail');
+Route::post('/admin/PSmanager/delete', [PcController::class, 'destroy'])->name('admin.pc.delete');
+Route::post('/admin/PSmanager/create', [PcController::class, 'create'])->name('admin.pc.create');
+Route::post('/admin/PSmanager/update', [PcController::class, 'update'])->name('admin.pc.update');

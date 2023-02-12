@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
 use App\Models\Pc;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -31,7 +30,7 @@ class PcController extends Controller
         $PC = new Pc;
         $PC->name = $request->name;
         $PC->save();
-        return redirect()->route('admin.PSmanager.PSlist')->with('success','Create. successfully');
+        return redirect()->route('admin.pc.list')->with('success','Create. successfully');
     }
 
     /**
@@ -54,7 +53,7 @@ class PcController extends Controller
     public function show($id)
     {
         $PC = Pc::where('id',"=",$id)->first();
-        return view('back-end.PSmanager.detail',compact(('PC')));
+        return view('back-end.pc.detail',compact(('PC')));
     }
 
     /**
@@ -81,7 +80,7 @@ class PcController extends Controller
         $order->name = $request->name;
         if($request->status == 1) $order->use_at = Carbon::now();
         $order->save();
-        return redirect()->route('admin.PSmanager.PSlist')->with('success','Updated successfully');
+        return redirect()->route('admin.pc.list')->with('success','Updated successfully');
     }
 
     /**
@@ -95,6 +94,6 @@ class PcController extends Controller
         $order = Pc::where('id', '=', $request->id)->first();
         $order->deleted_by = 'admin Number';
         $order->save();
-        return redirect()->route('admin.PSmanager.PSlist')->with('success','Deleted successfully');
+        return redirect()->route('admin.pc.list')->with('success','Deleted successfully');
     }
 }
