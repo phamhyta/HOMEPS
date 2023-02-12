@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PcController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,10 @@ Route::get('/admin/bills', [OrderController::class, 'index'])->name('admin.bill.
 Route::get('/admin/bills/{id}', [OrderController::class, 'show'])->name('admin.bill.detail');
 Route::post('/admin/bills/update', [OrderController::class, 'update'])->name('admin.bill.update');
 Route::post('/admin/bills/delete', [OrderController::class, 'destroy'])->name('admin.bill.delete');
+
+//PS route
+Route::get('/admin/PSmanager', [PcController::class, 'index'])->name('admin.PSmanager.PSlist');
+Route::get('/admin/PSmanager/{id}', [PcController::class, 'show'])->name('admin.PSmanager.detail');
+Route::post('/admin/PSmanager/delete', [PcController::class, 'destroy'])->name('admin.PSmanager.delete');
+Route::post('/admin/PSmanager/create', [PcController::class, 'create'])->name('admin.PSmanager.create');
+Route::post('/admin/PSmanager/update', [PcController::class, 'update'])->name('admin.PSmanager.update');

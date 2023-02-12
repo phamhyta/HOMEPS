@@ -70,6 +70,11 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Orders management</span></a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('admin.PSmanager.PSlist') }}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>PC management</span></a>
+            </li>
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>

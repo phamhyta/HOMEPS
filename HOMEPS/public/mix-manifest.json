@@ -1,10 +1,19 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/toastr.min.css": "/css/toastr.min.css",
     "/css/app.css": "/css/app.css",
+    "/css/sb-admin-2.min.css": "/css/sb-admin-2.min.css",
+    "/css/sb-admin-2.css": "/css/sb-admin-2.css",
+    "/css/toastr.min.css": "/css/toastr.min.css",
+    "/css/bill-list.css": "/css/bill-list.css",
     "/js/slider.js": "/js/slider.js",
     "/css/slider.css": "/css/slider.css",
     "/js/toastr.min.js": "/js/toastr.min.js",
     "/js/moment.min.js": "/js/moment.min.js",
-    "/js/jquery.cookie.min.js": "/js/jquery.cookie.min.js"
+    "/js/jquery.cookie.min.js": "/js/jquery.cookie.min.js",
+    "/js/sb-admin-2.js": "/js/sb-admin-2.js",
+    "/js/sb-admin-2.min.js": "/js/sb-admin-2.min.js",
+    "/js/demo/chart-area-demo.js": "/js/demo/chart-area-demo.js",
+    "/js/demo/chart-bar-demo.js": "/js/demo/chart-bar-demo.js",
+    "/js/demo/chart-pie-demo.js": "/js/demo/chart-pie-demo.js",
+    "/js/demo/datatables-demo.js": "/js/demo/datatables-demo.js"
 }
