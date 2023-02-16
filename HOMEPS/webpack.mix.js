@@ -29,4 +29,5 @@ mix.js("resources/js/app.js", "public/js")
     .copy("resources/js/demo/chart-bar-demo.js", "public/js/demo/chart-bar-demo.js")
     .copy("resources/js/demo/chart-pie-demo.js", "public/js/demo/chart-pie-demo.js")
     .copy("resources/js/demo/datatables-demo.js", "public/js/demo/datatables-demo.js")
+    .copy("resources/js/product.js", "public/js/product.js")
     .sourceMaps();
