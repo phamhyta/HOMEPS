@@ -27,7 +27,6 @@ class AdminProductController extends Controller
 
     public function update(Request $request)
     {
-        // dd($request->name);
         $product = Product::where('id', '=', $request->id)->first();
         $product->name = $request->name;
         $product->product_desc = $request->product_desc;
@@ -48,7 +47,6 @@ class AdminProductController extends Controller
 
     public function create(Request $request)
     {
-        // dd($request->name);
         $product = new Product();
         $product->name = $request->name;
         $product->product_desc = $request->product_desc;
