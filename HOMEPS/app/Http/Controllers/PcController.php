@@ -14,37 +14,27 @@ class PcController extends Controller
         return view('back-end.PSmanager.PSlist', compact(['orders']));
     }
 
-   
     public function create(Request $request)
     {
         $PC = new Pc;
         $PC->name = $request->name;
         $PC->save();
-        return redirect()->route('admin.pc.list')->with('success','Create. successfully');
-    }
-
-   
-    public function store(Request $request)
-    {
+        return redirect()->route('admin.pc.list')->with('success', 'Create. successfully');
     }
 
     public function show($id)
     {
-        $PC = Pc::where('id',"=",$id)->first();
-        return view('back-end.pc.detail',compact(('PC')));
-    }
-
-    public function edit(Pc $pc)
-    {
+        $PC = Pc::where('id', "=", $id)->first();
+        return view('back-end.pc.detail', compact(('PC')));
     }
 
     public function update(Request $request)
     {
         $order = Pc::where('id', '=', $request->id)->first();
         $order->name = $request->name;
-        if($request->status == 1) $order->use_at = Carbon::now();
+        if ($request->status == 1) $order->use_at = Carbon::now();
         $order->save();
-        return redirect()->route('admin.pc.list')->with('success','Updated successfully');
+        return redirect()->route('admin.pc.list')->with('success', 'Updated successfully');
     }
 
     public function destroy(Request $request)
@@ -52,6 +42,6 @@ class PcController extends Controller
         $order = Pc::where('id', '=', $request->id)->first();
         $order->deleted_by = 'admin Number';
         $order->save();
-        return redirect()->route('admin.pc.list')->with('success','Deleted successfully');
+        return redirect()->route('admin.pc.list')->with('success', 'Deleted successfully');
     }
 }
