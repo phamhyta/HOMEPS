@@ -71,6 +71,11 @@
                     <span>Orders management</span></a>
             </li>
             <li class="nav-item active">
+                <a class="nav-link" href="{{ route('admin.pc.list') }}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>PC management</span></a>
+            </li>
+            <li class="nav-item active">
                 <a class="nav-link" href="{{ route('admin.product.list') }}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Products management</span></a>
