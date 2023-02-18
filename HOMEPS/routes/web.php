@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AdminProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,10 @@ Route::get('/admin/bills', [OrderController::class, 'index'])->name('admin.bill.
 Route::get('/admin/bills/{id}', [OrderController::class, 'show'])->name('admin.bill.detail');
 Route::post('/admin/bills/update', [OrderController::class, 'update'])->name('admin.bill.update');
 Route::post('/admin/bills/delete', [OrderController::class, 'destroy'])->name('admin.bill.delete');
+
+//Product route
+Route::get('/admin/products', [AdminProductController::class, 'index'])->name('admin.product.list');
+Route::get('/admin/products/{id}', [AdminProductController::class, 'show'])->name('admin.product.detail');
+Route::post('/admin/products/update', [AdminProductController::class, 'update'])->name('admin.product.update');
+Route::post('/admin/products/delete', [AdminProductController::class, 'destroy'])->name('admin.product.delete');
+Route::post('/admin/products/create', [AdminProductController::class, 'create'])->name('admin.product.create');
