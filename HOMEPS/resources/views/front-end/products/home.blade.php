@@ -2,8 +2,8 @@
 
 @section('title', 'Home')
 @push('styles')
-    <link href="{{ asset('css/home-product.css') }}" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">   
+<link href="{{ asset('css/home-product.css') }}" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 @endpush
 @section('content')
 <div>
@@ -14,17 +14,17 @@
         </div>
         @endif
         <div class="row">
-            @foreach($products as $product) 
+            @foreach($products as $product)
             <div class="col-md-3">
                 <div class="card">
                     <div class="image-container">
-                        <div class="first">                          
+                        <div class="first">
                             <div class="d-flex justify-content-between align-items-center">
-                            <span class="discount">-15%</span>
-                            <span class="wishlist"><i class="fa fa-heart-o"></i></span>                      
+                                <span class="discount">-15%</span>
+                                <span class="wishlist"><i class="fa fa-heart-o"></i></span>
                             </div>
                         </div>
-                        <img src="{{ $product->url_image }}" class="img-fluid rounded thumbnail-image">                   
+                        <img src="{{ $product->url_image ?? "https://cdn.shopify.com/s/files/1/0563/5745/4002/products/141_1.png?v=1623399805" }}" class="img-fluid rounded thumbnail-image">
                     </div>
 
 
@@ -38,7 +38,7 @@
                         </div>
                         <div class="d-flex justify-content-between align-items-center pt-1">
                             <h5 class="dress-name">{{ $product->product_desc }}</h5>
-                          
+
                         </div>
                         <div class="d-flex justify-content-between align-items-center pt-1">
                             <div>
@@ -62,17 +62,16 @@
                             </div>
                             <div class="voutcher-right text-center border-left">
                                 <h5 class="discount-percent">15%</h5>
-                                <span class="off">Off</span>                               
-                            </div>                
-                        </div>            
-                    </div> 
-                </div>                         
-        </div>
-    @endforeach
+                                <span class="off">Off</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
         </div>
     </div>
 </div>
 <a id="boot-icon" href="{{ route('cart.detail') }}" class="bi bi-cart" style="font-size: 55px; color: rgb(0, 0, 255); opacity: 0.9; -webkit-text-stroke-width: 1.6px; border-radius: 20px 20px 20px; position: fixed; bottom: 80px; right: 65px"></button>
 
-@endsection
-
+    @endsection
