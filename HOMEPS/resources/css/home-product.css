@@ -63,6 +63,9 @@ body {
     font-size: 15px;
     font-weight: bold;
     width: 75%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .dress:hover {
