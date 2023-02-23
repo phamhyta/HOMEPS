@@ -1,4 +1,4 @@
-@extends('app')
+@extends('apphome')
 
 @section('title', 'Home')
 @push('styles')
@@ -41,7 +41,7 @@
                                 <span class="rating-number">Số lượng: {{ $product->amount }}</span>
                             </div>
                             <!-- <span class="buy">BUY+</span> -->
-                            <form method="POST" action="{{ route('cart.add', $product->id) }}">
+                            <form method="get" action="{{ route('cart.add', $product->id) }}">
                                 <button type="submit" name="add_to_cart">Mua</button>
                             </form>
                         </div>
@@ -67,7 +67,7 @@
         </div>
     </div>
 </div>
-<button id="boot-icon" class="bi bi-cart" style="font-size: 55px; color: rgb(0, 0, 255); opacity: 0.9; -webkit-text-stroke-width: 1.6px; border-radius: 20px 20px 20px; position: fixed; bottom: 80px; right: 65px"></button>
+<a id="boot-icon" href="{{ route('cart.detail') }}" class="bi bi-cart" style="font-size: 55px; color: rgb(0, 0, 255); opacity: 0.9; -webkit-text-stroke-width: 1.6px; border-radius: 20px 20px 20px; position: fixed; bottom: 80px; right: 65px"></button>
 
 @endsection
 

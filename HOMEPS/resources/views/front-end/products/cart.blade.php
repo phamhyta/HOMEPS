@@ -1,4 +1,4 @@
-@extends('app')
+@extends('apphome')
 
 @section('title', 'Home')
 @push('styles')
