@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\checkAdminLogin;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\PcController;
 
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,6 +49,7 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 // home product
+
 Route::get('/', [ProductController::class, 'index'])->name('home.index');
 Route::get('/product/{id}', [ProductController::class, 'show_detail'])->name('product.detail');
 Route::get('/shoppingcart', [ProductController::class, 'cart'])->name('cart.detail');
