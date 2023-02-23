@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\AdminProductController;
-use App\Http\Controllers\PcController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\checkAdminLogin;
 
@@ -20,8 +18,6 @@ use App\Http\Middleware\checkAdminLogin;
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/', [OrderController::class, 'create'])->name('admin.home');
-    //Admin route
-
     // Order route
     Route::get('/bills', [OrderController::class, 'index'])->name('admin.bill.list');
     Route::get('/bills/{id}', [OrderController::class, 'show'])->name('admin.bill.detail');
@@ -49,3 +45,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/forgot-password', [AdminController::class, 'forgotPassword'])->name('admin.forgot-password');
     Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
 });
+
+// home product
+Route::get('/', [ProductController::class, 'index'])->name('home.index');
+Route::get('/product/{id}', [ProductController::class, 'show_detail'])->name('product.detail');
+Route::get('/shoppingcart', [ProductController::class, 'cart'])->name('cart.detail');
+Route::get('/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('cart.add');
+Route::patch('/update-cart', [ProductController::class, 'update'])->name('cart.update');
+Route::patch('/remove-from-cart', [ProductController::class, 'remove'])->name('cart.remove');
