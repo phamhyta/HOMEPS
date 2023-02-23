@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Admin;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 
 class AdminSeeder extends Seeder
 {
@@ -24,7 +25,8 @@ class AdminSeeder extends Seeder
                 "last_name" => 'Lname' . $id,
                 "email" => 'admin'. $id .'@homepc.com',
                 "password" => Hash::make($randPassword),
-                "birthday" => Carbon::now()->subYear(20)
+                "birthday" => Carbon::now()->subYear(20),
+                "remember_token" => Str::random(10),
             ]);
         }
     }
