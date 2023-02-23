@@ -70,9 +70,17 @@ class AdminController extends Controller
         //
     }
 
-    public function update(Request $request, Admin $admin)
-    {
-        //
+    public function update(Admin $admin,Request $request)
+    {   
+        $admin->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'birthday' => $request->birthday,
+            'updated_at' => now()
+        ]);
+
+        return redirect()->route('admin.home')->with('message', 'Admin info has been updated!');
     }
 
     public function destroy(Admin $admin)

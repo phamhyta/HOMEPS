@@ -49,4 +49,5 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/forgot-password', [AdminController::class, 'forgotPassword'])->name('admin.forgot-password');
     Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
     Route::get('/Adminlist', [AdminController::class, 'show'])->name('admin.Adminlist');
+    Route::post('/{admin}', [AdminController::class, 'update'])->name('admin.update');
 });
