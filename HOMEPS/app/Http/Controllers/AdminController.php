@@ -59,9 +59,10 @@ class AdminController extends Controller
         return view('back-end.admin.forgot-password');
     }
 
-    public function show(Admin $admin)
-    {
-        //
+    public function show()
+    {   
+        $admins = Admin::whereNull('deleted_by')->get();
+        return view('back-end.admin.Adminlist', compact('admins'));
     }
 
     public function edit(Admin $admin)

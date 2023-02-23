@@ -55,7 +55,7 @@
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="{{ route('admin.login') }}">Login</a>
                         <a class="collapse-item" href="{{ route('admin.register') }}">Register</a>
-                        <a class="collapse-item" href="{{ route('admin.forgot-password') }}">Forgot Password</a>
+                        <a class="collapse-item" href="{{ route('admin.Adminlist') }}">AdminList</a>
                     </div>
                 </div>
             </li>
