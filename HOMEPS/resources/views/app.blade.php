@@ -259,9 +259,9 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#updateinfoModal">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
+                                    Update Info
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -309,6 +309,58 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+
+    <!-- Update info model -->
+    <div class="modal fade" id="updateinfoModal" tabindex="-1" role="dialog" aria-labelledby="updateUserinfo" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="updateUserinfo">Update Info</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form 
+        id="formAccountSettings" 
+        method="POST" 
+        action="{{ route('admin.update',auth()->id()) }}" 
+        enctype="multipart/form-data"
+        class="needs-validation" 
+        role="form"
+        novalidate
+    >
+    @csrf
+    <div class="card-body">
+        <div class="row">
+            <div class="mb-3 col-md-6">
+                <label for="first_name" class="form-label">{{ trans('First_name')}}</label>
+                <input class="form-control" type="text" id="first_name" name="first_name" value="{{ auth()->user()->first_name }}" autofocus="" required>
+                <div class="invalid-tooltip">{{ trans('sentence.required')}}</div>
+            </div>
+            <div class="mb-3 col-md-6">
+                <label for="last_name" class="form-label">{{ trans('Last_name')}}</label>
+                <input class="form-control" type="text" id="last_name" name="last_name" value="{{ auth()->user()->last_name }}" autofocus="" required>
+                <div class="invalid-tooltip">{{ trans('sentence.required')}}</div>
+            </div>
+            <div class="mb-3 col-md-6">
+                <label for="email" class="form-label">{{ trans('Email')}}</label>
+                <input class="form-control" type="text" id="email" name="email" value="{{ auth()->user()->email }}" placeholder="john.doe@example.com">
+                <div class="invalid-tooltip">{{ trans('sentence.required')}}</div>
+            </div>
+            <div class="mb-3 col-md-6">
+                <label for="email" class="form-label">{{ trans('DoB')}}</label>
+                <input class="form-control" type="date" id="birthday" name="birthday" value="{{ auth()->user()->birthday }}">
+                <div class="invalid-tooltip">{{ trans('sentence.required')}}</div>
+            </div>
+            <div class="mt-2">
+                <button type="submit" class="button-create me-2">{{ trans('Save_changes')}}</button>
+            </div>
+        </div>
+    </div>
+</form>
+                                </div>
+                            </div>
+                        </div>
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
