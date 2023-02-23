@@ -21,8 +21,15 @@ class ProductController extends Controller
     //show shopping cart
     public function cart()
     {
+        $cart = session()->get('cart');
+        $total = 0;
+        $quantity = 0;
+        foreach($cart as $c) {
+            $quantity += $c['quantity'];
+            $total += $c['quantity'] * $c['price'];
+        }
         $products = Product::get();
-        return view('front-end.products.cart', compact(['products']));
+        return view('front-end.products.cart', compact(['products', 'cart', 'total', 'quantity']));
     }
 
 
@@ -37,12 +44,13 @@ class ProductController extends Controller
         // if cart is empty then this the first product
         if(!$cart) {
             $cart = [
-                    $id => [
-                        "name" => $product->name,
-                        "quantity" => 1,
-                        "price" => $product->price,
-                        "photo" => $product->url_image,
-                    ]
+                $id => [
+                    "id" => $id,
+                    "name" => $product->name,
+                    "quantity" => 1,
+                    "price" => $product->price,
+                    "photo" => $product->url_image,
+                ]
             ];
             session()->put('cart', $cart);
             return redirect()->back()->with('success', 'Product added to cart successfully!');
@@ -51,10 +59,10 @@ class ProductController extends Controller
         if(isset($cart[$id])) {
             $cart[$id]['quantity']++;
             session()->put('cart', $cart);
-            return redirect()->back()->with('success', 'Product added to cart successfully!');
         }
         // if item not exist in cart then add to cart with quantity = 1
         $cart[$id] = [
+            "id" => $id,
             "name" => $product->name,
             "quantity" => 1,
             "price" => $product->price,
@@ -85,15 +93,21 @@ class ProductController extends Controller
                 unset($cart[$request->id]);
                 session()->put('cart', $cart);
             }
-            session()->flash('success', 'Product removed successfully');
+            return redirect()->back()->with('success', 'Product removed successfully');
         }
     }
 
 
     // Show selected product details
-    public function show_detail()
+    public function show_detail($id)
     {
-        $products = Product::get();
-        return view('front-end.products.detailproduct', compact(['products']));
+        $product = Product::where('id', '=', $id)->first();
+        $thumbnail = explode(",", $product->thumbnail);
+        $thumbnail[0] = str_replace("[", "", $thumbnail[0]);
+        $thumbnail[sizeof($thumbnail)-1] = str_replace("]", "", $thumbnail[sizeof($thumbnail)-1]);
+        for ($x = 0; $x < sizeof($thumbnail); $x++) {
+            $thumbnail[$x] = str_replace("\"", "", $thumbnail[$x]);
+        }
+        return view('front-end.products.detail', compact(['product', 'thumbnail']));
     }
 }

@@ -56,4 +56,4 @@ Route::get('/product/{id}', [ProductController::class, 'show_detail'])->name('pr
 Route::get('/shoppingcart', [ProductController::class, 'cart'])->name('cart.detail');
 Route::get('/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('cart.add');
 Route::patch('/update-cart', [ProductController::class, 'update'])->name('cart.update');
-Route::patch('/remove-from-cart', [ProductController::class, 'remove'])->name('cart.remove');
+Route::post('/remove-from-cart', [ProductController::class, 'remove'])->name('cart.remove');

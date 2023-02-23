@@ -8,6 +8,11 @@
 @section('content')
 <div>
     <div class="container mt-5">
+        @if ( Session::has('success') )
+        <div class="alert alert-success" id="popup_notification">
+            {{ Session::get('success') }}
+        </div>
+        @endif
         <div class="row">
             @foreach($products as $product) 
             <div class="col-md-3">
