@@ -60,23 +60,27 @@ body {
 
 
 .dress-name {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: bold;
     width: 75%;
 }
 
+.dress:hover {
+    color: black;
+}
 
 .new-price {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: bold;
     color: red;
 
 }
 
 .old-price {
-    font-size: 8px;
+    font-size: 10px;
     font-weight: bold;
     color: grey;
+    text-decoration-line: line-through;
 }
 
 
@@ -181,7 +185,7 @@ body {
 }
 
 .rating-number {
-    font-size: 10px;
+    font-size: 15px;
     color: grey;
 
 }
@@ -193,11 +197,11 @@ body {
 }
 
 
-
-
-
-
-
+.mt-3,
+.my-3 {
+    margin-top: 5px !important;
+    margin-bottom: 2rem;
+}
 
 
 

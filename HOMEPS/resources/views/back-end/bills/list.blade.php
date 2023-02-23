@@ -29,7 +29,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($orders as $order)
+                        @foreach ($orders as $order)`
                             <tr>
                                 <td>{{ $order->id }}</td>
                                 <td>{{ $order->pc[0]->name }}</td>
